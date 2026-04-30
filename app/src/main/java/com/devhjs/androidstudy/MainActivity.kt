@@ -7,6 +7,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.devhjs.androidstudy.presentation.ui.list.ListScreenRoot
+import com.devhjs.androidstudy.presentation.ui.list.ListScreenViewModel
 import com.devhjs.androidstudy.ui.theme.AndroidStudyTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,7 +21,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             AndroidStudyTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-
+                    ListScreenRoot(
+                        viewModel = hiltViewModel()
+                    )
                 }
             }
         }
