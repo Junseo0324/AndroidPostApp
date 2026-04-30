@@ -28,7 +28,7 @@ fun MainNavGraph(
             val route = backStackEntry.toRoute<MainRoute.Detail>()
             val postId = route.id
 
-            DetailScreenRoot()
+            DetailScreenRoot(postId = postId)
         }
 
     }
