@@ -9,7 +9,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.devhjs.androidstudy.presentation.ui.list.ListScreenRoot
-import com.devhjs.androidstudy.presentation.ui.theme.AndroidStudyTheme
+import com.devhjs.androidstudy.presentation.ui.designsystem.AndroidStudyTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

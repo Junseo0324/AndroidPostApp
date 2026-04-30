@@ -1,4 +1,4 @@
-package com.devhjs.androidstudy.presentation.ui.theme
+package com.devhjs.androidstudy.presentation.ui.designsystem
 
 import androidx.compose.ui.graphics.Color
 
