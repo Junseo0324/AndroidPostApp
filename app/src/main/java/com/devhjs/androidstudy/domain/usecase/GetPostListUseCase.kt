@@ -5,7 +5,7 @@ import com.devhjs.androidstudy.domain.model.Post
 import com.devhjs.androidstudy.domain.repository.PostRepository
 import javax.inject.Inject
 
-class GetPostUseCase @Inject constructor(
+class GetPostListUseCase @Inject constructor(
     private val postRepository: PostRepository
 ) {
     suspend fun execute(): Result<List<Post>,Exception> {
