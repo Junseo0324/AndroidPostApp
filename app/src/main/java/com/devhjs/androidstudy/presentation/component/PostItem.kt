@@ -1,4 +1,4 @@
-package com.devhjs.androidstudy.presentation.ui.component
+package com.devhjs.androidstudy.presentation.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

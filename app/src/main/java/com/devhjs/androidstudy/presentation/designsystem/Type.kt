@@ -1,4 +1,4 @@
-package com.devhjs.androidstudy.presentation.ui.designsystem
+package com.devhjs.androidstudy.presentation.designsystem
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

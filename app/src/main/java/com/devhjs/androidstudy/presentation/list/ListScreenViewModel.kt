@@ -1,4 +1,4 @@
-package com.devhjs.androidstudy.presentation.ui.list
+package com.devhjs.androidstudy.presentation.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

@@ -1,4 +1,4 @@
-package com.devhjs.androidstudy.presentation.ui.list
+package com.devhjs.androidstudy.presentation.list
 
 import androidx.compose.runtime.Immutable
 import com.devhjs.androidstudy.domain.model.Post

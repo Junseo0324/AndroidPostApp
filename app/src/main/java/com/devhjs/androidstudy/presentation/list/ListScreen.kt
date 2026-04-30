@@ -1,4 +1,4 @@
-package com.devhjs.androidstudy.presentation.ui.list
+package com.devhjs.androidstudy.presentation.list
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -7,7 +7,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.devhjs.androidstudy.presentation.ui.component.PostItem
+import com.devhjs.androidstudy.presentation.component.PostItem
 
 @Composable
 fun ListScreen(state: ListState) {

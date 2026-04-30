@@ -1,4 +1,4 @@
-package com.devhjs.androidstudy.presentation.ui.designsystem
+package com.devhjs.androidstudy.presentation.designsystem
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
