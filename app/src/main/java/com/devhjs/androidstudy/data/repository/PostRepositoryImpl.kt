@@ -4,8 +4,11 @@ import com.devhjs.androidstudy.data.mapper.toModel
 import com.devhjs.androidstudy.data.remote.api.PostApi
 import com.devhjs.androidstudy.domain.model.Post
 import com.devhjs.androidstudy.domain.repository.PostRepository
+import javax.inject.Inject
 
-class PostRepositoryImpl(private val postApi: PostApi) : PostRepository {
+class PostRepositoryImpl @Inject constructor(
+    private val postApi: PostApi
+) : PostRepository {
     override suspend fun getPosts(): List<Post> {
         return postApi.getPosts().map { it.toModel() }
     }
