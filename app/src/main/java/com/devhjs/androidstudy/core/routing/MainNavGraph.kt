@@ -5,7 +5,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.toRoute
 import com.devhjs.androidstudy.presentation.detail.DetailScreenRoot
 import com.devhjs.androidstudy.presentation.list.ListScreenRoot
 
@@ -24,11 +23,12 @@ fun MainNavGraph(
             ListScreenRoot()
         }
 
-        composable<MainRoute.Detail> { backStackEntry ->
-            val route = backStackEntry.toRoute<MainRoute.Detail>()
-            val postId = route.id
-
-            DetailScreenRoot(postId = postId)
+        composable<MainRoute.Detail> {
+            DetailScreenRoot(
+                onBackClick = {
+                    navController.popBackStack()
+                }
+            )
         }
 
     }
