@@ -10,7 +10,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.devhjs.androidstudy.presentation.component.PostItem
 
 @Composable
-fun ListScreen(state: ListState) {
+fun ListScreen(
+    state: ListState,
+    onAction: (ListAction) -> Unit = {},
+) {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -18,7 +21,10 @@ fun ListScreen(state: ListState) {
             modifier = Modifier.fillMaxSize()
         ) {
             items(state.posts) { post ->
-                PostItem(post)
+                PostItem(
+                    post = post,
+                    onAction = onAction
+                )
             }
         }
     }

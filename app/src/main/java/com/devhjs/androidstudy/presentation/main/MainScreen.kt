@@ -11,7 +11,7 @@ fun MainScreen(
     content: @Composable (Modifier) -> Unit
 ) {
     Scaffold(
-        containerColor = Color.Black,
+        containerColor = Color.White,
     ) { innerPadding ->
         content(Modifier.padding(innerPadding))
     }

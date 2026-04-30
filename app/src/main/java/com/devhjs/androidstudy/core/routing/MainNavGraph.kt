@@ -20,7 +20,11 @@ fun MainNavGraph(
     ) {
 
         composable<MainRoute.Home> {
-            ListScreenRoot()
+            ListScreenRoot(
+                navigateToDetail = { postId ->
+                    navController.navigate(MainRoute.Detail(postId))
+                }
+            )
         }
 
         composable<MainRoute.Detail> {

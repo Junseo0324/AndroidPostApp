@@ -22,10 +22,10 @@ class DetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    val _state = MutableStateFlow(DetailState())
+    private val _state = MutableStateFlow(DetailState())
     val state = _state.asStateFlow()
 
-    val _event = MutableSharedFlow<DetailEvent>()
+    private val _event = MutableSharedFlow<DetailEvent>()
     val event = _event.asSharedFlow()
 
     init {
