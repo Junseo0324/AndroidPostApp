@@ -1,6 +1,5 @@
-package com.devhjs.androidstudy.ui.theme
+package com.devhjs.androidstudy.presentation.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

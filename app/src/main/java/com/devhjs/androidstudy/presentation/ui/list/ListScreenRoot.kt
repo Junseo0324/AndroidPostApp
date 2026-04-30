@@ -11,5 +11,6 @@ fun ListScreenRoot(
     viewModel: ListScreenViewModel,
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+
     ListScreen(state = state)
 }
