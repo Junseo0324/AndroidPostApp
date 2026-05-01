@@ -4,12 +4,12 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class UserDto(
-    val address: Address,
-    val company: Company,
-    val email: String,
-    val id: Int,
-    val name: String,
-    val phone: String,
-    val username: String,
-    val website: String
+    val id: Int? = null,
+    val email: String? = null,
+    val name: String? = null,
+    val phone: String? = null,
+    val username: String? = null,
+    val website: String? = null,
+    val addressDto: AddressDto? = null,
+    val company: CompanyDto? = null,
 )

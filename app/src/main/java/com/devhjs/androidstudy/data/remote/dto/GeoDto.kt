@@ -3,8 +3,7 @@ package com.devhjs.androidstudy.data.remote.dto
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Company(
-    val bs: String,
-    val catchPhrase: String,
-    val name: String
+data class GeoDto(
+    val lat: String? = null,
+    val lng: String? = null,
 )

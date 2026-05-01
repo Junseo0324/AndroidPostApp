@@ -1,8 +1,5 @@
-package com.devhjs.androidstudy.data.remote.dto
+package com.devhjs.androidstudy.domain.model
 
-import kotlinx.serialization.Serializable
-
-@Serializable
 data class Address(
     val city: String,
     val geo: Geo,
