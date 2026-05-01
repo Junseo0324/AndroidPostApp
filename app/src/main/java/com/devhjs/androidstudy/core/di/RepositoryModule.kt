@@ -1,7 +1,9 @@
 package com.devhjs.androidstudy.core.di
 
 import com.devhjs.androidstudy.data.repository.PostRepositoryImpl
+import com.devhjs.androidstudy.data.repository.UserRepositoryImpl
 import com.devhjs.androidstudy.domain.repository.PostRepository
+import com.devhjs.androidstudy.domain.repository.UserRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -15,6 +17,11 @@ abstract class RepositoryModule {
     abstract fun bindPostRepository(
         postRepositoryImpl: PostRepositoryImpl
     ): PostRepository
+
+    @Binds
+    abstract fun bindUserRepository(
+        userRepositoryImpl: UserRepositoryImpl
+    ): UserRepository
 
 
 }
