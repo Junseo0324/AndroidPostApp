@@ -1,7 +1,5 @@
 package com.devhjs.androidstudy.domain.model
 
-import com.devhjs.androidstudy.data.remote.dto.AddressDto
-
 data class User(
     val id: Int,
     val email: String,
@@ -9,5 +7,6 @@ data class User(
     val phone: String,
     val username: String,
     val website: String,
-    val address: AddressDto
+    val address: Address,
+    val company: Company,
 )

@@ -3,7 +3,7 @@ package com.devhjs.androidstudy.data.mapper
 import com.devhjs.androidstudy.data.remote.dto.PostDto
 import com.devhjs.androidstudy.domain.model.Post
 
-fun Post.toPostDto(): PostDto {
+fun Post.toDto(): PostDto {
     return PostDto(
         userId = userId,
         id = id,
