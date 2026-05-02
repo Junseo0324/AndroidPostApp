@@ -5,11 +5,23 @@ import kotlinx.serialization.Serializable
 sealed interface MainRoute {
 
     @Serializable
-    data object Home : MainRoute
-
-    @Serializable
-    data class Detail(val id: Int) : MainRoute
-
-    @Serializable
     data object User : MainRoute
+
+    @Serializable
+    data object Post : MainRoute
+
+    @Serializable
+    data class PostDetail(val id: Int) : MainRoute
+
+    @Serializable
+    data class Comment(val postId: Int) : MainRoute
+
+    @Serializable
+    data class Album(val userId: Int) : MainRoute
+
+    @Serializable
+    data class Photo(val albumId: Int) : MainRoute
+
+    @Serializable
+    data class Todo(val userId: Int) : MainRoute
 }
