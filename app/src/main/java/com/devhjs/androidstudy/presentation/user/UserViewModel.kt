@@ -6,6 +6,7 @@ import com.devhjs.androidstudy.core.util.Result
 import com.devhjs.androidstudy.domain.usecase.GetUserListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -15,7 +16,7 @@ class UserViewModel @Inject constructor(
     private val getUserListUseCase: GetUserListUseCase,
 ) : ViewModel() {
     private val _state = MutableStateFlow(UserState())
-    val state = _state.value
+    val state = _state.asStateFlow()
 
     init {
         fetchUsers()
