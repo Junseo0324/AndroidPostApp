@@ -1,5 +1,6 @@
 package com.devhjs.androidstudy.presentation.postdetail
 
+import com.devhjs.androidstudy.domain.model.Comment
 import com.devhjs.androidstudy.domain.model.Post
 
 data class PostDetailState(
@@ -9,5 +10,6 @@ data class PostDetailState(
         title = "",
         body = "",
         userId = 0,
-    )
+    ),
+    val comments: List<Comment> = emptyList(),
 )

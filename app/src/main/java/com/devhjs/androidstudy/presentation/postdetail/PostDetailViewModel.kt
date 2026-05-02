@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import com.devhjs.androidstudy.core.routing.MainRoute
 import com.devhjs.androidstudy.core.util.Result
+import com.devhjs.androidstudy.domain.usecase.GetCommentByPostUseCase
 import com.devhjs.androidstudy.domain.usecase.GetPostUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -19,6 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PostDetailViewModel @Inject constructor(
     private val getPostUseCase: GetPostUseCase,
+    private val getCommentByPostUseCase: GetCommentByPostUseCase,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -46,13 +48,21 @@ class PostDetailViewModel @Inject constructor(
             _state.update { it.copy(isLoading = true) }
             when (val result = getPostUseCase.execute(postId)) {
                 is Result.Success -> {
-                    _state.update { it.copy(post = result.data, isLoading = false) }
+                    _state.update { it.copy(post = result.data) }
                 }
                 is Result.Error -> {
                     _state.update { it.copy(isLoading = false) }
                 }
             }
-
+            when (val result = getCommentByPostUseCase.execute(postId)) {
+                is Result.Success -> {
+                    _state.update { it.copy(comments = result.data) }
+                }
+                is Result.Error -> {
+                    _state.update { it.copy(isLoading = false) }
+                }
+            }
+            _state.update { it.copy(isLoading = false) }
         }
     }
 
