@@ -1,5 +1,6 @@
 package com.devhjs.androidstudy.core.di
 
+import com.devhjs.androidstudy.data.remote.api.CommentApi
 import com.devhjs.androidstudy.data.remote.api.PostApi
 import com.devhjs.androidstudy.data.remote.api.UserApi
 import dagger.Module
@@ -45,5 +46,11 @@ object NetworkModule {
     @Singleton
     fun provideUserApi(retrofit: Retrofit): UserApi {
         return retrofit.create(UserApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCommentApi(retrofit: Retrofit): CommentApi {
+        return retrofit.create(CommentApi::class.java)
     }
 }
