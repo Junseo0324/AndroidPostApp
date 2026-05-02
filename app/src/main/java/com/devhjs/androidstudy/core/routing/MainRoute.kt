@@ -9,4 +9,7 @@ sealed interface MainRoute {
 
     @Serializable
     data class Detail(val id: Int) : MainRoute
+
+    @Serializable
+    data object User : MainRoute
 }

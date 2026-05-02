@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.devhjs.androidstudy.presentation.detail.DetailScreenRoot
 import com.devhjs.androidstudy.presentation.list.ListScreenRoot
+import com.devhjs.androidstudy.presentation.user.UserScreenRoot
 
 @Composable
 fun MainNavGraph(
@@ -15,7 +16,7 @@ fun MainNavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = MainRoute.Home,
+        startDestination = MainRoute.User,
         modifier = modifier
     ) {
 
@@ -33,6 +34,10 @@ fun MainNavGraph(
                     navController.popBackStack()
                 }
             )
+        }
+
+        composable<MainRoute.User> {
+            UserScreenRoot()
         }
 
     }
