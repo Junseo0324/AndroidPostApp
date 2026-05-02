@@ -15,7 +15,7 @@ fun User.toDto(): UserDto {
         phone = phone,
         username = username,
         website = website,
-        addressDto = address.toDto(),
+        address = address.toDto(),
         company = company.toDto(),
     )
 }
@@ -28,7 +28,7 @@ fun UserDto.toModel(): User {
         phone = phone ?: "",
         username = username ?: "",
         website = website ?: "",
-        address = addressDto?.toModel() ?: Address(
+        address = address?.toModel() ?: Address(
             city = "",
             geo = Geo("", ""),
             street = "",
