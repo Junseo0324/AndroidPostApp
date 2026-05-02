@@ -1,4 +1,4 @@
-package com.devhjs.androidstudy.presentation.detail
+package com.devhjs.androidstudy.presentation.postdetail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -26,9 +26,9 @@ import androidx.compose.ui.unit.sp
 import com.devhjs.androidstudy.domain.model.Post
 
 @Composable
-fun DetailScreen(
-    state: DetailState = DetailState(),
-    onAction: (DetailAction) -> Unit = {},
+fun PostDetailScreen(
+    state: PostDetailState = PostDetailState(),
+    onAction: (PostDetailAction) -> Unit = {},
 ) {
     Column(
         modifier = Modifier
@@ -44,7 +44,7 @@ fun DetailScreen(
                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                 contentDescription = null,
                 modifier = Modifier.size(24.dp).clickable {
-                    onAction(DetailAction.onBackClick)
+                    onAction(PostDetailAction.onBackClick)
                 }
             )
             Spacer(modifier = Modifier.width(16.dp))
@@ -75,9 +75,9 @@ fun DetailScreen(
 
 @Preview(showBackground = true)
 @Composable
-private fun DetailScreenPreview() {
-    DetailScreen(
-        state = DetailState(
+private fun PostDetailScreenPreview() {
+    PostDetailScreen(
+        state = PostDetailState(
             post = Post(
                 id = 1,
                 title = "제목",

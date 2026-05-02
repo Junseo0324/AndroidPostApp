@@ -1,4 +1,4 @@
-package com.devhjs.androidstudy.presentation.detail
+package com.devhjs.androidstudy.presentation.postdetail
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -8,23 +8,23 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
-fun DetailScreenRoot(
+fun PostDetailScreenRoot(
     modifier: Modifier = Modifier,
     onBackClick: () -> Unit = {},
-    viewModel: DetailViewModel = hiltViewModel(),
+    viewModel: PostDetailViewModel = hiltViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     LaunchedEffect(Unit) {
         viewModel.event.collect { event ->
             when (event) {
-                DetailEvent.onBackClick -> {
+                PostDetailEvent.onBackClick -> {
                     onBackClick()
                 }
             }
         }
     }
-    DetailScreen(
+    PostDetailScreen(
         state = state,
         onAction = viewModel::onAction,
     )

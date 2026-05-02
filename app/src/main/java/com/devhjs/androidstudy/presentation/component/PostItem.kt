@@ -17,12 +17,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.devhjs.androidstudy.domain.model.Post
-import com.devhjs.androidstudy.presentation.list.ListAction
+import com.devhjs.androidstudy.presentation.post.PostAction
 
 @Composable
 fun PostItem(
     post: Post,
-    onAction: (ListAction) -> Unit = {}
+    onAction: (PostAction) -> Unit = {}
 ) {
     Column(
         modifier = Modifier
@@ -32,7 +32,7 @@ fun PostItem(
             .border(1.dp, color = Color.Black)
             .padding(16.dp)
             .clickable {
-                onAction(ListAction.onPostClick(post.id))
+                onAction(PostAction.onPostClick(post.id))
             }
     ) {
         Text(

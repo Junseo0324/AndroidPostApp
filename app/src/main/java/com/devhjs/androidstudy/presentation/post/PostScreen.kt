@@ -1,4 +1,4 @@
-package com.devhjs.androidstudy.presentation.list
+package com.devhjs.androidstudy.presentation.post
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,9 +10,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.devhjs.androidstudy.presentation.component.PostItem
 
 @Composable
-fun ListScreen(
-    state: ListState,
-    onAction: (ListAction) -> Unit = {},
+fun PostScreen(
+    state: PostState,
+    onAction: (PostAction) -> Unit = {},
 ) {
     Column(
         modifier = Modifier.fillMaxSize()
@@ -32,8 +32,8 @@ fun ListScreen(
 
 @Preview(showBackground = true)
 @Composable
-private fun ListScreenPreview() {
-    ListScreen(
-        state = ListState()
+private fun PostScreenPreview() {
+    PostScreen(
+        state = PostState()
     )
 }

@@ -1,4 +1,4 @@
-package com.devhjs.androidstudy.presentation.list
+package com.devhjs.androidstudy.presentation.post
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -7,8 +7,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
-fun ListScreenRoot(
-    viewModel: ListScreenViewModel= hiltViewModel(),
+fun PostScreenRoot(
+    viewModel: PostScreenViewModel= hiltViewModel(),
     navigateToDetail: (Int) -> Unit = {}
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -16,14 +16,14 @@ fun ListScreenRoot(
     LaunchedEffect(Unit) {
         viewModel.event.collect { event ->
             when (event) {
-                is ListEvent.onPostClick -> {
+                is PostEvent.onPostClick -> {
                     navigateToDetail(event.postId)
                 }
             }
         }
     }
 
-    ListScreen(
+    PostScreen(
         state = state,
         onAction = viewModel::onAction
     )

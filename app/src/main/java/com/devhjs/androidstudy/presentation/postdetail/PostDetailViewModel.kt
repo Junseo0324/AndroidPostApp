@@ -1,4 +1,4 @@
-package com.devhjs.androidstudy.presentation.detail
+package com.devhjs.androidstudy.presentation.postdetail
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -17,26 +17,26 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class DetailViewModel @Inject constructor(
+class PostDetailViewModel @Inject constructor(
     private val getPostUseCase: GetPostUseCase,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow(DetailState())
+    private val _state = MutableStateFlow(PostDetailState())
     val state = _state.asStateFlow()
 
-    private val _event = MutableSharedFlow<DetailEvent>()
+    private val _event = MutableSharedFlow<PostDetailEvent>()
     val event = _event.asSharedFlow()
 
     init {
-        val route = savedStateHandle.toRoute<MainRoute.Detail>()
+        val route = savedStateHandle.toRoute<MainRoute.PostDetail>()
         fetchPost(postId = route.id)
     }
-    fun onAction(action: DetailAction) {
+    fun onAction(action: PostDetailAction) {
         when (action) {
-            DetailAction.onBackClick -> {
+            PostDetailAction.onBackClick -> {
                 viewModelScope.launch {
-                    _event.emit(DetailEvent.onBackClick)
+                    _event.emit(PostDetailEvent.onBackClick)
                 }
             }
         }

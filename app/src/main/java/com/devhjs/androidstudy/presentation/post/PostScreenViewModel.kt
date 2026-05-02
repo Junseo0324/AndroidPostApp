@@ -1,4 +1,4 @@
-package com.devhjs.androidstudy.presentation.list
+package com.devhjs.androidstudy.presentation.post
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,24 +14,24 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ListScreenViewModel @Inject constructor(
+class PostScreenViewModel @Inject constructor(
     private val getPostListUseCase: GetPostListUseCase
 ) : ViewModel() {
-    private val _state = MutableStateFlow(ListState())
+    private val _state = MutableStateFlow(PostState())
     val state = _state.asStateFlow()
 
-    private val _event = MutableSharedFlow<ListEvent>()
+    private val _event = MutableSharedFlow<PostEvent>()
     val event = _event.asSharedFlow()
 
     init {
         fetchPosts()
     }
 
-    fun onAction(action: ListAction) {
+    fun onAction(action: PostAction) {
         when (action) {
-            is ListAction.onPostClick -> {
+            is PostAction.onPostClick -> {
                 viewModelScope.launch {
-                    _event.emit(ListEvent.onPostClick(action.postId))
+                    _event.emit(PostEvent.onPostClick(action.postId))
                 }
             }
         }

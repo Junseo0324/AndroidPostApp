@@ -1,8 +1,8 @@
-package com.devhjs.androidstudy.presentation.detail
+package com.devhjs.androidstudy.presentation.postdetail
 
 import com.devhjs.androidstudy.domain.model.Post
 
-data class DetailState(
+data class PostDetailState(
     val isLoading: Boolean = false,
     val post: Post = Post(
         id = 0,

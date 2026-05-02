@@ -5,8 +5,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.devhjs.androidstudy.presentation.detail.DetailScreenRoot
-import com.devhjs.androidstudy.presentation.list.ListScreenRoot
+import com.devhjs.androidstudy.presentation.post.PostScreenRoot
+import com.devhjs.androidstudy.presentation.postdetail.PostDetailScreenRoot
 import com.devhjs.androidstudy.presentation.user.UserScreenRoot
 
 @Composable
@@ -20,16 +20,16 @@ fun MainNavGraph(
         modifier = modifier
     ) {
 
-        composable<MainRoute.Home> {
-            ListScreenRoot(
+        composable<MainRoute.Post> {
+            PostScreenRoot(
                 navigateToDetail = { postId ->
-                    navController.navigate(MainRoute.Detail(postId))
+                    navController.navigate(MainRoute.PostDetail(postId))
                 }
             )
         }
 
-        composable<MainRoute.Detail> {
-            DetailScreenRoot(
+        composable<MainRoute.PostDetail> {
+            PostDetailScreenRoot(
                 onBackClick = {
                     navController.popBackStack()
                 }
