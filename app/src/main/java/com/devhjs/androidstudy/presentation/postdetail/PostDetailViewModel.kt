@@ -34,6 +34,8 @@ class PostDetailViewModel @Inject constructor(
         val route = savedStateHandle.toRoute<MainRoute.PostDetail>()
         fetchPost(postId = route.id)
     }
+
+
     fun onAction(action: PostDetailAction) {
         when (action) {
             PostDetailAction.onBackClick -> {
@@ -43,6 +45,8 @@ class PostDetailViewModel @Inject constructor(
             }
         }
     }
+
+
     private fun fetchPost(postId: Int) {
         viewModelScope.launch {
             _state.update { it.copy(isLoading = true) }
