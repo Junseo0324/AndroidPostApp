@@ -7,17 +7,17 @@ import com.devhjs.androidstudy.domain.repository.PostRepository
 import javax.inject.Inject
 
 class PostRepositoryImpl @Inject constructor(
-    private val postApi: PostApi
+    private val api: PostApi
 ) : PostRepository {
     override suspend fun getPosts(): List<Post> {
-        return postApi.getPosts().map { it.toModel() }
+        return api.getPosts().map { it.toModel() }
     }
 
     override suspend fun getPost(id: Int): Post {
-        return postApi.getPost(id).toModel()
+        return api.getPost(id).toModel()
     }
 
     override suspend fun getPostsByUserId(userId: Int): List<Post> {
-        return postApi.getPostsByUserId(userId).map { it.toModel() }
+        return api.getPostsByUserId(userId).map { it.toModel() }
     }
 }

@@ -7,18 +7,18 @@ import com.devhjs.androidstudy.domain.repository.CommentRepository
 import javax.inject.Inject
 
 class CommentRepositoryImpl @Inject constructor(
-    private val commentApi: CommentApi
+    private val api: CommentApi
 ) : CommentRepository {
     override suspend fun getComments(): List<Comment> {
-        return commentApi.getComments().map { it.toModel() }
+        return api.getComments().map { it.toModel() }
     }
 
     override suspend fun getComment(id: Int): Comment {
-        return commentApi.getComment(id).toModel()
+        return api.getComment(id).toModel()
     }
 
     override suspend fun getCommentsByPostId(postId: Int): List<Comment> {
-        return commentApi.getCommentsByPostId(postId).map { it.toModel() }
+        return api.getCommentsByPostId(postId).map { it.toModel() }
     }
 
 }
