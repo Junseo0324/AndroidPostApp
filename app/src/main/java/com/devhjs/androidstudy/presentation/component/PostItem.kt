@@ -32,7 +32,7 @@ fun PostItem(
             .border(1.dp, color = Color.Black)
             .padding(16.dp)
             .clickable {
-                onAction(PostAction.onPostClick(post.id))
+                onAction(PostAction.PostClick(post.id))
             }
     ) {
         Text(

@@ -34,9 +34,14 @@ class PostScreenViewModel @Inject constructor(
 
     fun onAction(action: PostAction) {
         when (action) {
-            is PostAction.onPostClick -> {
+            is PostAction.PostClick -> {
                 viewModelScope.launch {
-                    _event.emit(PostEvent.onPostClick(action.postId))
+                    _event.emit(PostEvent.OnPostClick(action.postId))
+                }
+            }
+            is PostAction.BackClick -> {
+                viewModelScope.launch {
+                    _event.emit(PostEvent.OnBackClick)
                 }
             }
         }

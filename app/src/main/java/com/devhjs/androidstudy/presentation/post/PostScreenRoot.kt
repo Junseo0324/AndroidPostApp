@@ -9,15 +9,19 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 @Composable
 fun PostScreenRoot(
     viewModel: PostScreenViewModel= hiltViewModel(),
-    navigateToDetail: (Int) -> Unit = {}
+    navigateToDetail: (Int) -> Unit = {},
+    navigateToBack: () -> Unit = {}
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     LaunchedEffect(Unit) {
         viewModel.event.collect { event ->
             when (event) {
-                is PostEvent.onPostClick -> {
+                is PostEvent.OnPostClick -> {
                     navigateToDetail(event.postId)
+                }
+                is PostEvent.OnBackClick -> {
+                    navigateToBack()
                 }
             }
         }

@@ -24,6 +24,9 @@ fun MainNavGraph(
             PostScreenRoot(
                 navigateToDetail = { postId ->
                     navController.navigate(MainRoute.PostDetail(postId))
+                },
+                navigateToBack = {
+                    navController.popBackStack()
                 }
             )
         }
