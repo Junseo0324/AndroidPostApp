@@ -1,6 +1,8 @@
 package com.devhjs.androidstudy.core.di
 
+import com.devhjs.androidstudy.data.remote.api.AlbumApi
 import com.devhjs.androidstudy.data.remote.api.CommentApi
+import com.devhjs.androidstudy.data.remote.api.PhotoApi
 import com.devhjs.androidstudy.data.remote.api.PostApi
 import com.devhjs.androidstudy.data.remote.api.UserApi
 import dagger.Module
@@ -52,5 +54,17 @@ object NetworkModule {
     @Singleton
     fun provideCommentApi(retrofit: Retrofit): CommentApi {
         return retrofit.create(CommentApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAlbumApi(retrofit: Retrofit): AlbumApi {
+        return retrofit.create(AlbumApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providePhotoApi(retrofit: Retrofit): PhotoApi {
+        return retrofit.create(PhotoApi::class.java)
     }
 }
