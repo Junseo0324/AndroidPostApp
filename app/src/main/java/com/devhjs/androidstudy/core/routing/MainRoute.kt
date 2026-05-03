@@ -14,6 +14,9 @@ sealed interface MainRoute {
     data class PostDetail(val id: Int) : MainRoute
 
     @Serializable
+    data class List(val userId: Int) : MainRoute
+
+    @Serializable
     data class Album(val userId: Int) : MainRoute
 
     @Serializable

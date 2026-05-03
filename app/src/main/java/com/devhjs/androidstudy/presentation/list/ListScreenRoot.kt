@@ -1,4 +1,4 @@
-package com.devhjs.androidstudy.presentation.user
+package com.devhjs.androidstudy.presentation.list
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -7,24 +7,20 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
-fun UserScreenRoot(
-    viewModel: UserViewModel = hiltViewModel(),
-    onNavigateToList: (Int) -> Unit = {}
+fun ListScreenRoot(
+    viewModel: ListViewModel = hiltViewModel(),
+    onNavigateToPost: (Int) -> Unit,
+    onNavigateToAlbum: (Int) -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     LaunchedEffect(Unit) {
         viewModel.event.collect { event ->
             when (event) {
-                is UserEvent.NavigateToPost -> {
-                    onNavigateToList(event.id)
-                }
+                is ListEvent.OnNavigateToPost -> onNavigateToPost(event.userId)
+                is ListEvent.OnNavigateToAlbum -> onNavigateToAlbum(event.userId)
             }
         }
     }
-
-    UserScreen(
-        state = state,
-        onAction = viewModel::onAction
-    )
+    ListScreen()
 }
