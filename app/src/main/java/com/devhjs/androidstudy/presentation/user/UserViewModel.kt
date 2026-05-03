@@ -5,7 +5,9 @@ import androidx.lifecycle.viewModelScope
 import com.devhjs.androidstudy.core.util.Result
 import com.devhjs.androidstudy.domain.usecase.GetUserListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -17,6 +19,9 @@ class UserViewModel @Inject constructor(
 ) : ViewModel() {
     private val _state = MutableStateFlow(UserState())
     val state = _state.asStateFlow()
+
+    private val _event = MutableSharedFlow<UserEvent>()
+    val event = _event.asSharedFlow()
 
     init {
         fetchUsers()
@@ -32,6 +37,16 @@ class UserViewModel @Inject constructor(
                 }
                 is Result.Error -> {
                     _state.update { it.copy(isLoading = false, error = result.error) }
+                }
+            }
+        }
+    }
+
+    fun onAction(action: UserAction) {
+        when (action) {
+            is UserAction.UserClick -> {
+                viewModelScope.launch {
+                    _event.emit(UserEvent.NavigateToPost(action.id))
                 }
             }
         }

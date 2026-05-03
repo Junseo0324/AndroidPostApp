@@ -1,6 +1,8 @@
 package com.devhjs.androidstudy.presentation.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,16 +24,22 @@ import com.devhjs.androidstudy.domain.model.Address
 import com.devhjs.androidstudy.domain.model.Company
 import com.devhjs.androidstudy.domain.model.Geo
 import com.devhjs.androidstudy.domain.model.User
+import com.devhjs.androidstudy.presentation.user.UserAction
 
 @Composable
 fun UserItem(
     user: User,
+    onAction: (UserAction) -> Unit = {}
 ) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .background(color = Color.White)
+            .border(1.dp, Color.LightGray)
             .padding(16.dp)
+            .clickable {
+                onAction(UserAction.UserClick(user.id))
+            }
     ) {
         Text(text = user.name, fontSize = 16.sp, fontWeight = FontWeight.Bold)
         Text(text = "@ ${user.username}", fontSize = 14.sp, color = Color.Gray)
