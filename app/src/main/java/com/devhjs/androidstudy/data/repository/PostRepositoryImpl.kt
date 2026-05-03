@@ -16,4 +16,8 @@ class PostRepositoryImpl @Inject constructor(
     override suspend fun getPost(id: Int): Post {
         return postApi.getPost(id).toModel()
     }
+
+    override suspend fun getPostsByUserId(userId: Int): List<Post> {
+        return postApi.getPostsByUserId(userId).map { it.toModel() }
+    }
 }

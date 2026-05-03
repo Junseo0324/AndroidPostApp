@@ -8,7 +8,7 @@ sealed interface MainRoute {
     data object User : MainRoute
 
     @Serializable
-    data object Post : MainRoute
+    data class Post(val userId: Int) : MainRoute
 
     @Serializable
     data class PostDetail(val id: Int) : MainRoute

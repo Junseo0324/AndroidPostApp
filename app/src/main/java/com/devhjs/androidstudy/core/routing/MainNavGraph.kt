@@ -37,7 +37,11 @@ fun MainNavGraph(
         }
 
         composable<MainRoute.User> {
-            UserScreenRoot()
+            UserScreenRoot(
+                onNavigateToPost = { userId ->
+                    navController.navigate(MainRoute.Post(userId))
+                }
+            )
         }
 
     }
