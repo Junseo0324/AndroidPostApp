@@ -22,5 +22,8 @@ fun ListScreenRoot(
             }
         }
     }
-    ListScreen()
+    ListScreen(
+        state = state,
+        onAction = viewModel::onAction
+    )
 }
