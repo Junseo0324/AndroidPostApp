@@ -2,6 +2,7 @@ package com.devhjs.androidstudy.presentation.postdetail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -47,9 +48,11 @@ fun PostDetailScreen(
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                 contentDescription = null,
-                modifier = Modifier.size(20.dp).clickable {
-                    onAction(PostDetailAction.onBackClick)
-                }
+                modifier = Modifier
+                    .size(20.dp)
+                    .clickable {
+                        onAction(PostDetailAction.onBackClick)
+                    }
             )
             Spacer(modifier = Modifier.width(16.dp))
             Text(
@@ -78,10 +81,19 @@ fun PostDetailScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Text(text = "Comment", fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(text = "Comment", fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(text = "${state.comments.size} 개", fontSize = 12.sp, color = Color.Gray)
+        }
         Spacer(modifier = Modifier.height(8.dp))
         LazyColumn(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             items(state.comments) { comment ->
                 CommentItem(
