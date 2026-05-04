@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.devhjs.androidstudy.presentation.album.AlbumScreenRoot
 import com.devhjs.androidstudy.presentation.list.ListScreenRoot
 import com.devhjs.androidstudy.presentation.post.PostScreenRoot
 import com.devhjs.androidstudy.presentation.postdetail.PostDetailScreenRoot
@@ -60,6 +61,14 @@ fun MainNavGraph(
             )
         }
 
+        composable<MainRoute.Album> {
+            AlbumScreenRoot(
+
+                onBackClick = {
+                    navController.popBackStack()
+                }
+            )
+        }
     }
 
 }
