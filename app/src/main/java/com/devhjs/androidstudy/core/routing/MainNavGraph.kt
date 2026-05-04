@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.devhjs.androidstudy.presentation.album.AlbumScreenRoot
 import com.devhjs.androidstudy.presentation.list.ListScreenRoot
+import com.devhjs.androidstudy.presentation.photo.PhotoScreenRoot
 import com.devhjs.androidstudy.presentation.post.PostScreenRoot
 import com.devhjs.androidstudy.presentation.postdetail.PostDetailScreenRoot
 import com.devhjs.androidstudy.presentation.user.UserScreenRoot
@@ -63,7 +64,16 @@ fun MainNavGraph(
 
         composable<MainRoute.Album> {
             AlbumScreenRoot(
-
+                onNavigateToPhoto = {
+                    navController.navigate(MainRoute.Photo(it))
+                },
+                onBackClick = {
+                    navController.popBackStack()
+                }
+            )
+        }
+        composable<MainRoute.Photo> {
+            PhotoScreenRoot(
                 onBackClick = {
                     navController.popBackStack()
                 }
