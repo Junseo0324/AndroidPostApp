@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun ListScreen(
@@ -43,9 +44,9 @@ fun ListScreen(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                Text("게시물")
+                Text("게시물", fontSize = 20.sp)
                 Spacer(modifier = Modifier.height(8.dp))
-                Text(state.postSize.toString())
+                Text(state.postSize.toString(),fontSize = 20.sp)
             }
             Spacer(modifier = Modifier.width(16.dp))
             Column(
@@ -59,9 +60,9 @@ fun ListScreen(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                Text("앨범")
+                Text("앨범", fontSize = 20.sp)
                 Spacer(modifier = Modifier.height(8.dp))
-                Text(state.albumSize.toString())
+                Text(state.albumSize.toString(), fontSize = 20.sp)
             }
         }
     }
