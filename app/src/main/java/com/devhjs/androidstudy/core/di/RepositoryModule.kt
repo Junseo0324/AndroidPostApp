@@ -4,11 +4,13 @@ import com.devhjs.androidstudy.data.repository.AlbumRepositoryImpl
 import com.devhjs.androidstudy.data.repository.CommentRepositoryImpl
 import com.devhjs.androidstudy.data.repository.PhotoRepositoryImpl
 import com.devhjs.androidstudy.data.repository.PostRepositoryImpl
+import com.devhjs.androidstudy.data.repository.TodoRepositoryImpl
 import com.devhjs.androidstudy.data.repository.UserRepositoryImpl
 import com.devhjs.androidstudy.domain.repository.AlbumRepository
 import com.devhjs.androidstudy.domain.repository.CommentRepository
 import com.devhjs.androidstudy.domain.repository.PhotoRepository
 import com.devhjs.androidstudy.domain.repository.PostRepository
+import com.devhjs.androidstudy.domain.repository.TodoRepository
 import com.devhjs.androidstudy.domain.repository.UserRepository
 import dagger.Binds
 import dagger.Module
@@ -43,5 +45,10 @@ abstract class RepositoryModule {
     abstract fun bindPhotoRepository(
         photoRepositoryImpl: PhotoRepositoryImpl
     ): PhotoRepository
+
+    @Binds
+    abstract fun bindTodoRepository(
+        todoRepositoryImpl: TodoRepositoryImpl
+    ): TodoRepository
 
 }
