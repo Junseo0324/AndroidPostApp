@@ -4,6 +4,7 @@ import com.devhjs.androidstudy.data.remote.api.AlbumApi
 import com.devhjs.androidstudy.data.remote.api.CommentApi
 import com.devhjs.androidstudy.data.remote.api.PhotoApi
 import com.devhjs.androidstudy.data.remote.api.PostApi
+import com.devhjs.androidstudy.data.remote.api.TodoApi
 import com.devhjs.androidstudy.data.remote.api.UserApi
 import dagger.Module
 import dagger.Provides
@@ -66,5 +67,11 @@ object NetworkModule {
     @Singleton
     fun providePhotoApi(retrofit: Retrofit): PhotoApi {
         return retrofit.create(PhotoApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideTodoApi(retrofit: Retrofit): TodoApi {
+        return retrofit.create(TodoApi::class.java)
     }
 }
