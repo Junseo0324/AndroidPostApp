@@ -10,6 +10,7 @@ import com.devhjs.androidstudy.presentation.list.ListScreenRoot
 import com.devhjs.androidstudy.presentation.photo.PhotoScreenRoot
 import com.devhjs.androidstudy.presentation.post.PostScreenRoot
 import com.devhjs.androidstudy.presentation.postdetail.PostDetailScreenRoot
+import com.devhjs.androidstudy.presentation.todo.TodoScreenRoot
 import com.devhjs.androidstudy.presentation.user.UserScreenRoot
 
 @Composable
@@ -74,6 +75,14 @@ fun MainNavGraph(
         }
         composable<MainRoute.Photo> {
             PhotoScreenRoot(
+                onBackClick = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable<MainRoute.Todo> {
+            TodoScreenRoot(
                 onBackClick = {
                     navController.popBackStack()
                 }

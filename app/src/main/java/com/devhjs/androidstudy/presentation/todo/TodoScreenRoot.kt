@@ -21,7 +21,7 @@ fun TodoScreenRoot(
         }
     }
     TodoScreen(
-        onBackClick = onBackClick
+        onAction = viewModel::onAction,
     )
 
 }
