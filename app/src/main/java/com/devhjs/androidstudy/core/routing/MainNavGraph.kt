@@ -42,6 +42,9 @@ fun MainNavGraph(
                 },
                 onNavigateToAlbum = { userId ->
                     navController.navigate(MainRoute.Album(userId))
+                },
+                onNavigateToTodo = { userId ->
+                    navController.navigate(MainRoute.Todo(userId))
                 }
             )
         }
