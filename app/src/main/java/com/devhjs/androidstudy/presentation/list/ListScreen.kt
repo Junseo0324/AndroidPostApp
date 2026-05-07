@@ -65,6 +65,21 @@ fun ListScreen(
                 Text(state.albumSize.toString(), fontSize = 20.sp)
             }
         }
+        Column(
+            modifier = Modifier
+                .weight(1f)
+                .height(150.dp)
+                .border(1.dp, Color.Black, shape = RoundedCornerShape(8.dp))
+                .clickable {
+                    onAction(ListAction.OnAlbumClick)
+                },
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text("할 일", fontSize = 20.sp)
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(state.albumSize.toString(), fontSize = 20.sp)
+        }
     }
 }
 

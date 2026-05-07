@@ -10,7 +10,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 fun ListScreenRoot(
     viewModel: ListViewModel = hiltViewModel(),
     onNavigateToPost: (Int) -> Unit,
-    onNavigateToAlbum: (Int) -> Unit
+    onNavigateToAlbum: (Int) -> Unit,
+    onNavigateToTodo: (Int) -> Unit,
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
@@ -19,6 +20,7 @@ fun ListScreenRoot(
             when (event) {
                 is ListEvent.OnNavigateToPost -> onNavigateToPost(event.userId)
                 is ListEvent.OnNavigateToAlbum -> onNavigateToAlbum(event.userId)
+                is ListEvent.OnNavigateToTodo -> onNavigateToTodo(event.userId)
             }
         }
     }
