@@ -5,6 +5,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface TodoApi {
-    @GET
+    @GET("todos")
     suspend fun getTodo(@Query("userId") userId: Int): List<TodoDto>
 }

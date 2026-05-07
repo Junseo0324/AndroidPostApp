@@ -21,6 +21,7 @@ fun TodoScreenRoot(
         }
     }
     TodoScreen(
+        state = state,
         onAction = viewModel::onAction,
     )
 
