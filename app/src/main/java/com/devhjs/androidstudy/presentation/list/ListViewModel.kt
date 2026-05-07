@@ -39,7 +39,7 @@ class ListViewModel @Inject constructor(
             _state.update { it.copy(isLoading = true) }
             when (val result = getPostAndAlbumUseCase.execute(userId)) {
                 is Result.Success -> {
-                    _state.update { it.copy(postSize = result.data.first, albumSize = result.data.second) }
+                    _state.update { it.copy(postSize = result.data.first, albumSize = result.data.second, todoSize = result.data.third) }
                 }
                 is Result.Error -> {
                     _state.update { it.copy(error = result.error) }
@@ -60,6 +60,11 @@ class ListViewModel @Inject constructor(
             is ListAction.OnAlbumClick -> {
                 viewModelScope.launch {
                     _event.emit(ListEvent.OnNavigateToAlbum(userId))
+                }
+            }
+            is ListAction.OnTodoClick -> {
+                viewModelScope.launch {
+                    _event.emit(ListEvent.OnNavigateToTodo(userId))
                 }
             }
         }
