@@ -7,9 +7,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,7 +31,8 @@ fun ListScreen(
             .padding(16.dp)
     ) {
         Row(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Column(
                 modifier = Modifier
@@ -48,7 +49,6 @@ fun ListScreen(
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(state.postSize.toString(),fontSize = 20.sp)
             }
-            Spacer(modifier = Modifier.width(16.dp))
             Column(
                 modifier = Modifier
                     .weight(1f)
@@ -65,13 +65,14 @@ fun ListScreen(
                 Text(state.albumSize.toString(), fontSize = 20.sp)
             }
         }
+        Spacer(modifier = Modifier.height(16.dp))
         Column(
             modifier = Modifier
-                .weight(1f)
+                .fillMaxWidth(0.5f)
                 .height(150.dp)
                 .border(1.dp, Color.Black, shape = RoundedCornerShape(8.dp))
                 .clickable {
-                    onAction(ListAction.OnAlbumClick)
+                    onAction(ListAction.OnTodoClick)
                 },
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
