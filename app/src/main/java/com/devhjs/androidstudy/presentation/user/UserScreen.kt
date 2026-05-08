@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.devhjs.androidstudy.presentation.component.LoadingScreen
 import com.devhjs.androidstudy.presentation.component.UserItem
 
 @Composable
@@ -27,28 +28,32 @@ fun UserScreen(
     state: UserState = UserState(),
     onAction: (UserAction) -> Unit = {},
 ) {
-    Column(
-        modifier = Modifier.fillMaxSize().background(color = Color.White).padding(16.dp)
-    ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
+    if (state.isLoading) {
+        LoadingScreen()
+    } else {
+        Column(
+            modifier = Modifier.fillMaxSize().background(color = Color.White).padding(16.dp)
         ) {
-            Text(text = "사용자 목록", fontSize = 20.sp, fontWeight = FontWeight.Bold)
-            Text(text = "${state.users.size} 명", fontSize = 12.sp, color = Color.Gray)
-        }
-        Spacer(modifier = Modifier.height(16.dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(text = "사용자 목록", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                Text(text = "${state.users.size} 명", fontSize = 12.sp, color = Color.Gray)
+            }
+            Spacer(modifier = Modifier.height(16.dp))
 
-        LazyColumn(
-            modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            items(state.users) { user ->
-                UserItem(
-                    user = user,
-                    onAction = onAction
-                )
+            LazyColumn(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                items(state.users) { user ->
+                    UserItem(
+                        user = user,
+                        onAction = onAction
+                    )
+                }
             }
         }
     }

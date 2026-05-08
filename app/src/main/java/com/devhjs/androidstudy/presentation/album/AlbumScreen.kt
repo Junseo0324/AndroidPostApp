@@ -27,55 +27,60 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.devhjs.androidstudy.presentation.component.AlbumItem
+import com.devhjs.androidstudy.presentation.component.LoadingScreen
 
 @Composable
 fun AlbumScreen(
     state: AlbumState = AlbumState(),
     onAction: (AlbumAction) -> Unit = {},
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = Color.White)
-            .padding(16.dp),
-    ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
+    if (state.isLoading) {
+        LoadingScreen()
+    } else {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = Color.White)
+                .padding(16.dp),
         ) {
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                contentDescription = null,
-                modifier = Modifier
-                    .size(20.dp)
-                    .clickable {
-                        onAction(AlbumAction.OnBackClick)
-                    }
-            )
-            Spacer(modifier = Modifier.width(16.dp))
-            Text(
-                text = "뒤로 가기",
-                fontSize = 16.sp,
-                modifier = Modifier.fillMaxWidth()
-            )
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-        HorizontalDivider()
-        Spacer(modifier = Modifier.height(16.dp))
-
-
-        LazyColumn(
-            modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            items(state.albums) { album ->
-                AlbumItem(
-                    album = album,
-                    onItemClick = {
-                        onAction(AlbumAction.OnPhotoClick(album.id))
-                    }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(20.dp)
+                        .clickable {
+                            onAction(AlbumAction.OnBackClick)
+                        }
                 )
+                Spacer(modifier = Modifier.width(16.dp))
+                Text(
+                    text = "뒤로 가기",
+                    fontSize = 16.sp,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+            HorizontalDivider()
+            Spacer(modifier = Modifier.height(16.dp))
+
+
+            LazyColumn(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                items(state.albums) { album ->
+                    AlbumItem(
+                        album = album,
+                        onItemClick = {
+                            onAction(AlbumAction.OnPhotoClick(album.id))
+                        }
+                    )
+                }
             }
         }
     }
@@ -85,4 +90,15 @@ fun AlbumScreen(
 @Composable
 private fun AlbumScreenPreview() {
     AlbumScreen()
+}
+
+
+@Preview
+@Composable
+private fun AlbumScreenPreviewIsLoading() {
+    AlbumScreen(
+        state = AlbumState(
+            isLoading = true
+        )
+    )
 }

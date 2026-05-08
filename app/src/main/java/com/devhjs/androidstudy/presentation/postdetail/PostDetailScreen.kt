@@ -29,79 +29,83 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.devhjs.androidstudy.domain.model.Post
 import com.devhjs.androidstudy.presentation.component.CommentItem
+import com.devhjs.androidstudy.presentation.component.LoadingScreen
 
 @Composable
 fun PostDetailScreen(
     state: PostDetailState = PostDetailState(),
     onAction: (PostDetailAction) -> Unit = {},
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = Color.White)
-            .padding(16.dp),
-    ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
+    if (state.isLoading) {
+        LoadingScreen()
+    } else {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = Color.White)
+                .padding(16.dp),
         ) {
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                contentDescription = null,
-                modifier = Modifier
-                    .size(20.dp)
-                    .clickable {
-                        onAction(PostDetailAction.onBackClick)
-                    }
-            )
-            Spacer(modifier = Modifier.width(16.dp))
-            Text(
-                text = "뒤로 가기",
-                fontSize = 16.sp,
-                modifier = Modifier.fillMaxWidth()
-            )
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-        HorizontalDivider()
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Text(
-            text = state.post.title,
-            fontSize = 24.sp,
-            modifier = Modifier.fillMaxWidth(),
-            maxLines = 2
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(
-            text = state.post.body,
-            fontSize = 18.sp,
-            modifier = Modifier.fillMaxWidth(),
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text(text = "Comment", fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(text = "${state.comments.size} 개", fontSize = 12.sp, color = Color.Gray)
-        }
-        Spacer(modifier = Modifier.height(8.dp))
-        LazyColumn(
-            modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            items(state.comments) { comment ->
-                CommentItem(
-                    comment = comment
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(20.dp)
+                        .clickable {
+                            onAction(PostDetailAction.onBackClick)
+                        }
+                )
+                Spacer(modifier = Modifier.width(16.dp))
+                Text(
+                    text = "뒤로 가기",
+                    fontSize = 16.sp,
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
-        }
 
+            Spacer(modifier = Modifier.height(16.dp))
+            HorizontalDivider()
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Text(
+                text = state.post.title,
+                fontSize = 24.sp,
+                modifier = Modifier.fillMaxWidth(),
+                maxLines = 2
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(
+                text = state.post.body,
+                fontSize = 18.sp,
+                modifier = Modifier.fillMaxWidth(),
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(text = "Comment", fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(text = "${state.comments.size} 개", fontSize = 12.sp, color = Color.Gray)
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+            LazyColumn(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                items(state.comments) { comment ->
+                    CommentItem(
+                        comment = comment
+                    )
+                }
+            }
+        }
     }
 }
 

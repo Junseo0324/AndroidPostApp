@@ -27,6 +27,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.devhjs.androidstudy.presentation.component.LoadingScreen
 import com.devhjs.androidstudy.presentation.component.PhotoItem
 
 @Composable
@@ -34,45 +35,49 @@ fun PhotoScreen(
     state: PhotoState = PhotoState(),
     onAction: (PhotoAction) -> Unit = {},
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = Color.White)
-            .padding(16.dp),
-    ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
+    if (state.isLoading) {
+        LoadingScreen()
+    } else {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = Color.White)
+                .padding(16.dp),
         ) {
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                contentDescription = null,
-                modifier = Modifier
-                    .size(20.dp)
-                    .clickable {
-                        onAction(PhotoAction.OnBackClick)
-                    }
-            )
-            Spacer(modifier = Modifier.width(16.dp))
-            Text(
-                text = "뒤로 가기",
-                fontSize = 16.sp,
-                modifier = Modifier.fillMaxWidth()
-            )
-        }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(20.dp)
+                        .clickable {
+                            onAction(PhotoAction.OnBackClick)
+                        }
+                )
+                Spacer(modifier = Modifier.width(16.dp))
+                Text(
+                    text = "뒤로 가기",
+                    fontSize = 16.sp,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
 
-        Spacer(modifier = Modifier.height(16.dp))
-        HorizontalDivider()
-        Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
+            HorizontalDivider()
+            Spacer(modifier = Modifier.height(16.dp))
 
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(3),
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            items(state.photos) { photo ->
-                PhotoItem(photo)
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(3),
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                items(state.photos) { photo ->
+                    PhotoItem(photo)
+                }
             }
         }
     }
