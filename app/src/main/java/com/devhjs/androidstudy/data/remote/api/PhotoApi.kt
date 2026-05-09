@@ -8,4 +8,11 @@ interface PhotoApi {
 
     @GET("photos")
     suspend fun getPhotosByAlbumId(@Query("albumId") albumId: Int): List<PhotoDto>
+
+    @GET("photos")
+    suspend fun getPhotosByAlbumIdPaged(
+        @Query("albumId") albumId: Int,
+        @Query("_page") page: Int,
+        @Query("_limit") limit: Int
+    ): List<PhotoDto>
 }
