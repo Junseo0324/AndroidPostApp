@@ -65,6 +65,10 @@ dependencies {
     // Coil
     implementation(libs.coil.compose)
 
+    // Paging 3
+    implementation(libs.paging.runtime)
+    implementation(libs.paging.compose)
+
 
     testImplementation(libs.junit)
     testImplementation(libs.mockk)
