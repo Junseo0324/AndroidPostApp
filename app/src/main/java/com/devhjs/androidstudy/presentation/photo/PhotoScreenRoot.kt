@@ -10,7 +10,6 @@ fun PhotoScreenRoot(
     viewModel: PhotoViewModel = hiltViewModel(),
     onBackClick: () -> Unit = {},
 ) {
-//    val state by viewModel.state.collectAsStateWithLifecycle()
     val lazyPagingItems = viewModel.photoPagingData.collectAsLazyPagingItems()
 
     LaunchedEffect(Unit) {
